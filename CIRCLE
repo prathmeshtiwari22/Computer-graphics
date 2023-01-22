@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+
+void main()
+{
+int x,y,r,xc,yc;
+int pk;
+int gd=DETECT,gm=0;
+detectgraph(&gd,&gm);
+initgraph(&gd,&gm,"C:\\TurboC3\\BGI");
+printf("enter the value for x & y:");
+scanf("%d%d",&xc,&yc);
+printf("enter the valur for r:");
+scanf("%d",&r);
+x=0;
+y=r;
+pk=1-r;
+
+do
+{
+putpixel(x+xc,y+yc,WHITE);
+putpixel(-x+xc,y+yc,RED);
+putpixel(x+xc,-y+yc,BLUE);
+putpixel(-x+xc,-y+yc,GREEN);
+putpixel(y+yc,x+xc,WHITE);
+putpixel(-y+yc,x+xc,RED);
+putpixel(y+yc,-x+xc,BLUE);
+putpixel(-y+yc,-x+xc,GREEN );
+delay(50);
+
+if(pk<0)
+{
+pk=pk+(2*x)+3;
+x=x+1;
+y=y;
+}
+else
+{
+pk=pk+(2*x)-(2*y)+5;
+x=x+1;
+y=y-1;
+}
+}
+while(x<y);
+getch();
+}
