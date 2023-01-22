@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+
+void main()
+{
+int x1,x2,y1,y2,del1,del2,Xnext,Ynext,Pk;
+float m;
+int gd=DETECT,gm=0;
+detectgraph(&gd,&gm);
+initgraph(&gd,&gm,"C:\\TurboC3\\BGI");
+printf("enter the values ");
+scanf("%d%d%d%d",&x1,&y1,&x2,&y2);
+del1=x2-x1;
+del2=y2-y1;
+
+Xnext=x1;
+Ynext=y1;
+putpixel(Xnext,Ynext,WHITE);
+
+m=del2/del1;
+
+if (m<1)
+{
+Pk=(2*del2)-del1;
+while(Xnext<=x2 )
+{
+if(Pk<0)
+{
+Xnext=Xnext+1;
+Ynext=Ynext;
+Pk=Pk+(2*del2);
+}
+else{
+Xnext=Xnext+1;
+Ynext=Ynext+1;
+Pk=Pk+(2*del2)-(2*del1);
+}
+
+putpixel(Xnext,Ynext,WHITE);
+
+}
+}
+
+else
+{
+Pk=(2*del1)-del2;
+while(Xnext<=x2)
+{
+if(Pk<0)
+{
+Xnext=Xnext;
+Ynext=Ynext+1;
+Pk=Pk+(2*del1);
+}
+else{
+Xnext=Xnext+1;
+Ynext=Ynext+1;
+Pk=Pk+(2*del1)-(2*del2);
+}
+putpixel(Xnext,Ynext,WHITE);
+}
+}
+getch();
+}
